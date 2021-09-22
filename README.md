@@ -1,8 +1,7 @@
 # Social Media App Express PostgeSQL
 
 
-
-First of all Cookies is not your besnuess
+First of all Cookies is not your business, the backend will handle them just set withCredentials to true
 
 
 | Name | Value |
@@ -33,7 +32,9 @@ First of all Cookies is not your besnuess
         2.  Go to <a href="#delete-chat">Delete Chat </a> End point
 
     - Explore <a href="#messages">Messages Apis</a>
-______
+
+## Dependencies
+_____
 | Package      | version |
 | ----------- | ----------- |
 | bcrypt      | 5.0.1       |
