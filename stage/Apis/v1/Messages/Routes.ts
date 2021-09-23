@@ -4,9 +4,9 @@ import * as Controller from './Controllers';
 import CatchError from "../../../Utils/CatchError";
 import ProtectedRoute from "../../../Utils/ProtectedRoute";
 
-Router.post("/send", ProtectedRoute, CatchError(Controller.Send))
-Router.delete("/delete", ProtectedRoute, CatchError(Controller.Delete))
-Router.put("/edit", ProtectedRoute, CatchError(Controller.Edit))
+Router.post("/", ProtectedRoute, CatchError(Controller.Send))
+Router.delete("/", ProtectedRoute, CatchError(Controller.Delete))
+Router.patch("/", ProtectedRoute, CatchError(Controller.Edit))
 
 
 

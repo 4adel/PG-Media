@@ -41,14 +41,14 @@ import Post from "./Apis/v1/Posts/Routes"
 import CommentRoute from "./Apis/v1/Comment/Routes"
 import Replay from "./Apis/v1/Replies/Routes"
 import Chat from "./Apis/v1/Chat/Routes"
-import Messege from "./Apis/v1/Messeges/Routes"
+import Message from "./Apis/v1/Messages/Routes"
 
 App.use("/", User);
 App.use("/post", Post);
 App.use("/comment", CommentRoute);
 App.use("/replies", Replay);
 App.use("/chat", Chat);
-App.use("/messages", Messege);
+App.use("/messages", Message);
 
 
 /**

@@ -7,7 +7,6 @@ First of all Cookies is not your business, the backend will handle them just set
 | Name | Value |
 | ----------- | ----------- |
 | JWT_SECRET | Set Random Secret key      |
-| APIS_VERSION | 1 (Current) |
 | DATABASE_URL | PostgreSQL cluster Url |  
 
 <hr>
@@ -63,6 +62,7 @@ if username already Exist the request wil be directed to login route
     Axios({
         method: "POST",
         url: '/register',
+        withCredentials: true,
         data: {
             username,
             password,
@@ -90,6 +90,7 @@ if username already Exist the request wil be directed to login route
     Axios({
         method: "POST",
         url: "/login",
+        withCredentials: true,
         data: {
             username,
             password
@@ -113,6 +114,7 @@ if username already Exist the request wil be directed to login route
     Axios({
         method: "POST",
         url: '/renewToken',
+        withCredentials: true,
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -133,6 +135,7 @@ if username already Exist the request wil be directed to login route
     Axios({
         method: "POST",
         url: '/post',
+        withCredentials: true,
         data: {
             published, // Boolean define the status of the post Private ot Public
             content
@@ -163,6 +166,7 @@ if username already Exist the request wil be directed to login route
     Axios({
         method: "DELETE",
         url: "/post",
+        withCredentials: true,
         data: {
             post_id
         }
@@ -183,6 +187,7 @@ if username already Exist the request wil be directed to login route
     Axios({
         method: "PATCH",
         url: '/post',
+        withCredentials: true,
         data: {
             published, // New Post Status
             content // New Content
@@ -205,10 +210,8 @@ if username already Exist the request wil be directed to login route
     
     Axios({
         method: "GET",
-        url: /posts/:post_id,
-        headers: {
-            Authrization: Bearer <Token>
-        },
+        url: '/post/:post_id',
+        withCredentials: true,
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -226,10 +229,8 @@ if username already Exist the request wil be directed to login route
  
     Axios({  
         method: "GET",  
-        url: /posts/:user_id/:round,  
-        headers: {  
-            Authrization: Bearer < Token>  
-        },
+        url: '/post/:user_id/:round',  
+        withCredentials: true,
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -252,13 +253,11 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "POST",
-        url: /chat/create,
+        url: '/chat',
+        withCredentials: true,
         data: {
             chat_with, // id for the user that will chat with
         },
-        headers: {
-            Authrization : Beare <TOEKEN>
-        }
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -274,11 +273,11 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "DELETE",
-        url: /chat/delete,
+        url: '/chat',
         headers: {
             chat_id,
-            Authrization : Beare <TOEKEN>
         }
+        withCredentials: true,
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -295,10 +294,8 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "POST",
-        url: "/messages/send",
-        headers: {
-            Authrization : Beare <TOEKEN>
-        },
+        url: "/message",
+        withCredentials: true,
         data: {
             chat_id,
             content,
@@ -318,13 +315,11 @@ if username already Exist the request wil be directed to login route
 
 ```  
     Axios({
-        method: "PUT",
-        url: "/messages/edit",
-        headers: {
-            Authrization : Beare <TOEKEN>
-        },
+        method: "PATCH",
+        url: "/message",
+        withCredentials: true,
         data: {
-            messege_id,
+            message_id,
             chat_id,
             content
         }
@@ -343,11 +338,11 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "DELETE",
-        url: "/messages/delete",
+        url: "/message",
         headers: {
-            Authrization : Beare <TOEKEN>,
-            messege_id
-        }
+            message_id
+        },
+        withCredentials: true,
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -366,6 +361,7 @@ if username already Exist the request wil be directed to login route
     Axios({
         method: "POST",
         url: "/comment",
+        withCredentials: true,
         data: {
             content,
             post_id
@@ -389,7 +385,8 @@ if username already Exist the request wil be directed to login route
         data: {
             content,
             comment_id
-        }
+        },
+        withCredentials: true,
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -405,7 +402,8 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "DELETE",
-        url: "/comment"
+        url: "/comment",
+        withCredentials: true,
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -423,6 +421,7 @@ if username already Exist the request wil be directed to login route
     Axios({
         method: "GET",
         url: "/comment/post_comments/:post_id/:round",
+        withCredentials: true,
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -441,10 +440,8 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "POST",
-        url: "/replies/create",
-        headers: {
-            Authrization : Beare <TOEKEN>,
-        },
+        url: "/replies",
+        withCredentials: true,
         data: {
             content,
             comment_id,
@@ -464,11 +461,9 @@ if username already Exist the request wil be directed to login route
 
 ```  
     Axios({
-        method: "POST",
-        url: "/replies/edit",
-        headers: {
-            Authrization : Beare <TOEKEN>,
-        },
+        method: "PATCH",
+        url: "/replies",
+        withCredentials: true,
         data: {
             content,
             reply_id
@@ -488,9 +483,9 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "DELETE",
-        url: "/replies/delete",
+        url: "/replies",
+        withCredentials: true,
         headers: {
-            Authrization : Beare <TOEKEN>,
             reply_id
         }
     }).then((res)  => {

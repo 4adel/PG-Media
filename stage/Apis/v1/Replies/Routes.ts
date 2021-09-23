@@ -6,9 +6,9 @@ import CommentMiddleWare from "../../../Utils/Comments";
 import CatchError from "../../../Utils/CatchError";
 import ProtectedRoute from "../../../Utils/ProtectedRoute";
 
-Router.post("/create", ProtectedRoute, CommentMiddleWare.CommentExist, CatchError(Controller.Create) )
-Router.post("/edit", ProtectedRoute, CatchError(Controller.Edit) )
-Router.delete("/delete", ProtectedRoute, CatchError(Controller.Delete) )
+Router.post("/", ProtectedRoute, CommentMiddleWare.CommentExist, CatchError(Controller.Create) )
+Router.patch("/", ProtectedRoute, CatchError(Controller.Edit) )
+Router.delete("/", ProtectedRoute, CatchError(Controller.Delete) )
 
 
 export default Router

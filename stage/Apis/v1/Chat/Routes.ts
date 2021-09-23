@@ -5,8 +5,8 @@ import ProtectedRoute from "../../../Utils/ProtectedRoute";
 import CatchError from "../../../Utils/CatchError";
 
 
-Router.post("/create", ProtectedRoute, CatchError(Controller.Create))
-Router.delete("/delete", ProtectedRoute, CatchError(Controller.Delete))
+Router.post("/", ProtectedRoute, CatchError(Controller.Create))
+Router.delete("/", ProtectedRoute, CatchError(Controller.Delete))
 
 
 
