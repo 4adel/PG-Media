@@ -61,7 +61,9 @@ export default async function (req: Request, res: Response, next: NextFunction) 
 
   let is_username_unique = await unique_username(Data.username);
   if (!is_username_unique) {
-    Login(req, res, next)
+    res.status(500)
+    res.send(`${Data.username} is Already Registered`);
+    res.end()
     return;
   }
 
