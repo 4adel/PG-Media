@@ -39,7 +39,7 @@ App.use(compression());
 import User from "./Apis/v1/Users/Routes"
 import Post from "./Apis/v1/Posts/Routes"
 import CommentRoute from "./Apis/v1/Comment/Routes"
-import Replay from "./Apis/v1/Replys/Routes"
+import Replay from "./Apis/v1/Replies/Routes"
 import Chat from "./Apis/v1/Chat/Routes"
 import Messege from "./Apis/v1/Messeges/Routes"
 
