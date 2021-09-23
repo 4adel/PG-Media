@@ -62,7 +62,7 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "POST",
-        url: /users/register,
+        url: '/register',
         data: {
             username,
             password,
@@ -89,7 +89,7 @@ if username already Exist the request wil be directed to login route
     
     Axios({
         method: "POST",
-        url: /users/login,
+        url: "/login",
         data: {
             username,
             password
@@ -112,10 +112,7 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "POST",
-        url: /users/login,
-        headers: {
-            Authrization: Bearer <Token>
-        }
+        url: '/renewToken',
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -135,12 +132,9 @@ if username already Exist the request wil be directed to login route
     
     Axios({
         method: "POST",
-        url: /posts/create,
-        headers: {
-            Authrization: Bearer <Token>
-        },
+        url: '/post',
         data: {
-            published, // Bollean define the status of the post Private ot Public
+            published, // Boolean define the status of the post Private ot Public
             content
         }
     }).then((res)  => {
@@ -168,10 +162,7 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "DELETE",
-        url: /posts/delete,
-        headers: {
-            Authrization: Bearer <Token>
-        },
+        url: "/post",
         data: {
             post_id
         }
@@ -190,11 +181,8 @@ if username already Exist the request wil be directed to login route
 
 ```  
     Axios({
-        method: "POST",
-        url: /posts/delete,
-        headers: {
-            Authrization: Bearer <Token>
-        },
+        method: "PATCH",
+        url: '/post',
         data: {
             published, // New Post Status
             content // New Content

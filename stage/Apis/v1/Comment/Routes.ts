@@ -1,8 +1,6 @@
 import Express from "express";
 const Router = Express.Router()
 
-import Path from "path";
-
 
 
 import * as Controller from './Controllers';

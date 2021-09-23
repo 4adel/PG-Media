@@ -3,8 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const dotenv_1 = __importDefault(require("dotenv"));
 if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config();
+    dotenv_1.default.config();
 }
 const express_1 = __importDefault(require("express"));
 const App = (0, express_1.default)();
@@ -67,6 +68,7 @@ io.on("connection", function (socket) {
         socket.join(CHAT_ID);
     }
 });
+console.log(process.env.NODE_ENV);
 Server.listen(PORT, () => {
     console.log(`Running ${process.env.NODE_ENV === "production" ? "Production" : "Development"} on port ${PORT} Baby!`);
 });
