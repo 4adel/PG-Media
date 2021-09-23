@@ -9,6 +9,7 @@ const App = Express();
 import Http from "http";
 const Server = new Http.Server(App);
 import Path from "path";
+import cookieParser from 'cookie-parser';
 
 const io = require("socket.io")(Server, {
 	origin:
@@ -28,6 +29,7 @@ App.use(Express.static(Path.resolve(__dirname, "public")));
 App.set("io", io);
 App.use(Express.json());
 App.use(Express.urlencoded({ extended: false }));
+App.use(cookieParser())
 
 App.use(
 	Cors({

@@ -112,7 +112,7 @@ export default async function (req: Request, res: Response, next: NextFunction) 
 
   if (!token) {
     res.status(500);
-    res.send("Faild to Create Token maybe you some data are missed");
+    res.send("Failed to Create Token maybe you some data are missed");
     res.end();
     return;
   }

@@ -6,43 +6,39 @@ import { Request ,Response, NextFunction } from 'express'
 
 export default function  ProtectedRoute(req: any, res: Response, next: NextFunction)  {
 
-    const cookies: any = { token: "", auth: "" }
     
-    req!.headers!.cookie!.split('; ').forEach((tok: any) => {
-        const TOKEN = tok.split("=")
-        cookies[TOKEN[0]] = TOKEN[1]
-    });
 
-    
-    try {
-        if (!cookies) {
-            throw "Missing authorization headers";
-        }
-        if (!cookies.token) {
-            throw "Missing Authrization token";
-        }
-    } catch (error) {
+
+    if(!req.cookies.token) {
+        res.cookie("token", null, {
+            httpOnly: process.env.NODE_ENV === "production"? true: false,
+            secure: process.env.NODE_ENV === "production"? true: false ,
+            path: "/"
+          })
+          res.cookie("auth", false, {
+            httpOnly: false,
+            secure: false,
+            path: "/"
+          })
         res.status(401)
-        res.send(error)
+        res.send("token is missing")
         res.end();
         return
     }
-
-
     
        
 
     const JWT_SECRET_TYPE : any = process!.env!.JWT_SECRET
-    JWT.verify(cookies.token, JWT_SECRET_TYPE , (error: any, decoded: any) => {
+    JWT.verify(req.cookies.token, JWT_SECRET_TYPE , (error: any, decoded: any) => {
         if (error) {
-            res.cookie("token", null, {
+            res.cookie("token", "", {
                 httpOnly: process.env.NODE_ENV === "production"? true: false,
                 secure: process.env.NODE_ENV === "production"? true: false ,
                 path: "/"
               })
               res.cookie("auth", false, {
                 httpOnly: false,
-                secure: false,
+                secure: process.env.NODE_ENV === "production"? true: false ,
                 path: "/"
               })
             res.status(401)
