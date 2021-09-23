@@ -8,9 +8,9 @@ import CatchError from "../../../Utils/CatchError";
 import ProtectedRoute from "../../../Utils/ProtectedRoute";
 import PostMiddleWare from "../../../Utils/Post";
 
-Router.post("/create", ProtectedRoute, PostMiddleWare.IsPostExist, CatchError(Controller.Create))
-Router.post("/edit", ProtectedRoute, CatchError(Controller.Edit))
-Router.delete("/delete", ProtectedRoute, CatchError(Controller.Delete))
+Router.post("/", ProtectedRoute, PostMiddleWare.IsPostExist, CatchError(Controller.Create))
+Router.patch("/", ProtectedRoute, CatchError(Controller.Edit))
+Router.delete("/", ProtectedRoute, CatchError(Controller.Delete))
 Router.get("/post_comments/:post_id/:round", ProtectedRoute,  PostMiddleWare.IsPostExist, CatchError(Controller.GetPostComments))
 
 

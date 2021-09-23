@@ -45,7 +45,7 @@ import Messege from "./Apis/v1/Messeges/Routes"
 
 App.use("/", User);
 App.use("/post", Post);
-App.use("/comments", CommentRoute);
+App.use("/comment", CommentRoute);
 App.use("/replies", Replay);
 App.use("/chat", Chat);
 App.use("/messages", Messege);

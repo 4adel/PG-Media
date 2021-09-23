@@ -365,10 +365,7 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "POST",
-        url: "/comments/create",
-        headers: {
-            Authrization : Beare <TOEKEN>,
-        },
+        url: "/comment",
         data: {
             content,
             post_id
@@ -387,11 +384,8 @@ if username already Exist the request wil be directed to login route
 
 ```  
     Axios({
-        method: "POST",
-        url: "/comments/edit",
-        headers: {
-            Authrization : Beare <TOEKEN>,
-        },
+        method: "PATCH",
+        url: "/comment",
         data: {
             content,
             comment_id
@@ -411,11 +405,7 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "DELETE",
-        url: "/comments/edit",
-        headers: {
-            Authrization : Beare <TOEKEN>,
-            comment_id
-        }
+        url: "/comment"
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
@@ -432,10 +422,7 @@ if username already Exist the request wil be directed to login route
 ```  
     Axios({
         method: "GET",
-        url: "/comments/post_comments/:post_id/:round",
-        headers: {
-            Authrization : Beare <TOEKEN>,
-        }
+        url: "/comment/post_comments/:post_id/:round",
     }).then((res)  => {
         ... Do Some thing
     }).catch((error) => {
