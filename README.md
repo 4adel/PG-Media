@@ -1,5 +1,6 @@
 # Social Media App Express PostgeSQL
 
+Download postman file to test endpoint via postman locally [Download](https://www.getpostman.com/collections/ad64827ae9087bcf831e)
 
 First of all Cookies is not your business, the backend will handle them just set withCredentials to true
 
