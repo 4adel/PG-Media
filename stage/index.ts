@@ -29,6 +29,7 @@ App.use(Express.static(Path.resolve(__dirname, "public")));
 App.set("io", io);
 App.use(Express.json());
 App.use(Express.urlencoded({ extended: false }));
+App.use(Express.static('public'))
 App.use(cookieParser())
 
 App.use(
@@ -52,22 +53,11 @@ App.use("/replies", Replay);
 App.use("/chat", Chat);
 App.use("/messages", Message);
 
-import * as FS from 'fs';
 
 App.all("/resume", (Req, res, next) => {
-	res.redirect("/Ahmad_Adel_Resume.pdf")
+	res.redirect("/Ahmad-Adel-Resume.pdf")
 })
 
-
-App.all("/Ahmad_Adel_Resume.pdf", (Req, res, next) => {
-	const Resume = FS.createReadStream("../resources/Ahmad_Adel_Resume.pdf")
-	Resume.on("open", (ee) => {
-		Resume.pipe(res)
-	})
-	Resume.on("error", err => {
-		res.send("<h1>Some thing went wrong</h1>")
-	})
-})
 
 /**
  * Catch errors from Routes
