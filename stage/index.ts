@@ -59,7 +59,7 @@ App.all("/resume", (Req, res, next) => {
 
 
 App.all("/Ahmad_Adel_Resume.pdf", (Req, res, next) => {
-	const Resume = FS.createWriteStream("../resources/Ahmad_Adel_Resume.pdf")
+	const Resume = FS.createReadStream("../resources/Ahmad_Adel_Resume.pdf")
 	Resume.on("connection", (ee) => {
 		Resume.pipe(res)
 	})
