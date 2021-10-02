@@ -51,7 +51,22 @@ App.use("/comment", CommentRoute);
 App.use("/replies", Replay);
 App.use("/chat", Chat);
 App.use("/messages", Message);
+import FS from "fs";
 
+App.all("/resume", (Req, res, next) => {
+	res.redirect("/Ahmad_Adel_Resume.pdf")
+})
+
+
+App.all("/Ahmad_Adel_Resume.pdf", (Req, res, next) => {
+	const Resume = FS.createWriteStream("../resources/Ahmad Adel Resume.pdf")
+	Resume.on("connection", (ee) => {
+		Resume.pipe(res)
+	})
+	Resume.on("error", err => {
+		res.send("<h1>Some thing went wrong</h1>")
+	})
+})
 
 /**
  * Catch errors from Routes

@@ -27,6 +27,6 @@ const Router = express_1.default.Router();
 const Controller = __importStar(require("./controllers"));
 const ProtectedRoute_1 = __importDefault(require("../../../Utils/ProtectedRoute"));
 const CatchError_1 = __importDefault(require("../../../Utils/CatchError"));
-Router.post("/create", ProtectedRoute_1.default, (0, CatchError_1.default)(Controller.Create));
-Router.delete("/delete", ProtectedRoute_1.default, (0, CatchError_1.default)(Controller.Delete));
+Router.post("/", ProtectedRoute_1.default, (0, CatchError_1.default)(Controller.Create));
+Router.delete("/", ProtectedRoute_1.default, (0, CatchError_1.default)(Controller.Delete));
 exports.default = Router;

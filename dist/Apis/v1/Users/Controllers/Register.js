@@ -37,7 +37,6 @@ const CreateToken_1 = __importDefault(require("../../../../Utils/CreateToken"));
 const UniqueUsername_1 = __importDefault(require("../../../../Utils/UniqueUsername"));
 const email_validator_1 = __importDefault(require("email-validator"));
 const TrustedDate_1 = __importDefault(require("../../../../Utils/TrustedDate"));
-const Login_1 = __importDefault(require("./Login"));
 // POST
 function default_1(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -73,7 +72,9 @@ function default_1(req, res, next) {
         }
         let is_username_unique = yield (0, UniqueUsername_1.default)(Data.username);
         if (!is_username_unique) {
-            (0, Login_1.default)(req, res, next);
+            res.status(500);
+            res.send(`${Data.username} is Already Registered`);
+            res.end();
             return;
         }
         let hash = bcrypt_1.default.hashSync(Data.password, 10);
@@ -118,7 +119,7 @@ function default_1(req, res, next) {
         });
         if (!token) {
             res.status(500);
-            res.send("Faild to Create Token maybe you some data are missed");
+            res.send("Failed to Create Token maybe you some data are missed");
             res.end();
             return;
         }
