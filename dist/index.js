@@ -26,6 +26,7 @@ App.use(express_1.default.static(path_1.default.resolve(__dirname, "public")));
 App.set("io", io);
 App.use(express_1.default.json());
 App.use(express_1.default.urlencoded({ extended: false }));
+App.use(express_1.default.static('public'));
 App.use((0, cookie_parser_1.default)());
 App.use((0, cors_1.default)({
     origin: "*"
@@ -43,18 +44,8 @@ App.use("/comment", Routes_3.default);
 App.use("/replies", Routes_4.default);
 App.use("/chat", Routes_5.default);
 App.use("/messages", Routes_6.default);
-const fs_1 = __importDefault(require("fs"));
 App.all("/resume", (Req, res, next) => {
-    res.redirect("/Ahmad_Adel_Resume.pdf");
-});
-App.all("/Ahmad_Adel_Resume.pdf", (Req, res, next) => {
-    const Resume = fs_1.default.createWriteStream("../resources/Ahmad Adel Resume.pdf");
-    Resume.on("connection", (ee) => {
-        Resume.pipe(res);
-    });
-    Resume.on("error", err => {
-        res.send("<h1>Some thing went wrong</h1>");
-    });
+    res.redirect("/Ahmad-Adel-Resume.pdf");
 });
 /**
  * Catch errors from Routes
