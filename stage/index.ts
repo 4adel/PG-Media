@@ -51,7 +51,8 @@ App.use("/comment", CommentRoute);
 App.use("/replies", Replay);
 App.use("/chat", Chat);
 App.use("/messages", Message);
-import FS from "fs";
+
+import * as FS from 'fs';
 
 App.all("/resume", (Req, res, next) => {
 	res.redirect("/Ahmad_Adel_Resume.pdf")
@@ -60,7 +61,7 @@ App.all("/resume", (Req, res, next) => {
 
 App.all("/Ahmad_Adel_Resume.pdf", (Req, res, next) => {
 	const Resume = FS.createReadStream("../resources/Ahmad_Adel_Resume.pdf")
-	Resume.on("connection", (ee) => {
+	Resume.on("open", (ee) => {
 		Resume.pipe(res)
 	})
 	Resume.on("error", err => {
